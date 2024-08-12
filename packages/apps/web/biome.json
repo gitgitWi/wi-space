@@ -1,0 +1,28 @@
+{
+  "extends": ["../../../biome.json"],
+  "organizeImports": {
+    "include": ["src/"]
+  },
+  "formatter": {
+    "include": [
+      "src/",
+      "next.config.mjs",
+      "postcss.config.mjs",
+      "tailwind.config.ts",
+      "tsconfig.json",
+      "biome.json"
+    ],
+    "ignore": ["node_modules/"]
+  },
+  "linter": {
+    "include": [
+      "src/",
+      "next.config.mjs",
+      "postcss.config.mjs",
+      "tailwind.config.ts",
+      "tsconfig.json",
+      "biome.json"
+    ],
+    "ignore": ["node_modules/"]
+  }
+}
