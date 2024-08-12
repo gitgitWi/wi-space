@@ -6,8 +6,11 @@
     "email": "rs1kflvx@duck.com"
   },
   "workspaces": [
-    "packages/*"
+    "packages/**"
   ],
+  "scripts": {
+    "serve:web": "bun --filter '@wi-space/web' dev"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@types/bun": "latest"
