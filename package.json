@@ -1,6 +1,10 @@
 {
   "name": "wi-space",
   "version": "0.0.1",
+  "author": {
+    "name": "gitgitWi",
+    "email": "rs1kflvx@duck.com"
+  },
   "workspaces": [
     "packages/*"
   ],
