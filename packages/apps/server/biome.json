@@ -1,0 +1,14 @@
+{
+  "extends": ["../../../biome.json"],
+  "organizeImports": {
+    "include": ["src/"]
+  },
+  "formatter": {
+    "include": ["src/", "tsconfig.json", "biome.json"],
+    "ignore": ["node_modules/"]
+  },
+  "linter": {
+    "include": ["src/", "tsconfig.json", "biome.json"],
+    "ignore": ["node_modules/"]
+  }
+}
