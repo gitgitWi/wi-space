@@ -12,7 +12,7 @@
       "lineEnding": "lf",
       "semicolons": "always",
       "trailingCommas": "all",
-      "quoteStyle": "double",
+      "quoteStyle": "single",
       "lineWidth": 80
     }
   },
