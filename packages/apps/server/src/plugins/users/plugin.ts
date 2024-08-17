@@ -1,22 +1,51 @@
 import { Value } from '@sinclair/typebox/value';
 import { Elysia } from 'elysia';
 import { ulid } from 'ulid';
+import { eq } from 'drizzle-orm';
 
 import { db } from '~/clients/db';
-import { InsertUserSchema, userTable } from './schema';
+import {
+  InsertUserRequestSchema,
+  SelectUserByIdRequestSchema,
+  userTable,
+} from './schema';
 
+/**
+ * @todo auth
+ */
 export const userPlugin = new Elysia({
   prefix: '/users',
 })
-  .get('/:userId', ({ params, set }) => {
-    set.status = 'Not Implemented';
-    return { userId: params.userId };
-  })
+  .get(
+    '/:id',
+    async ({ params, set }) => {
+      const result = await db
+        .select()
+        .from(userTable)
+        .where(eq(userTable.id, params.id));
+
+      if (result.length === 0) {
+        set.status = 'Not Found';
+
+        return {
+          message: 'Not Found',
+          data: null,
+        };
+      }
+
+      return {
+        message: 'ok',
+        data: result[0],
+      };
+    },
+    {
+      params: SelectUserByIdRequestSchema,
+    },
+  )
   .post(
     '/',
     async ({ body, set }) => {
-      console.debug('[UserPlugin.POST.CreateUser]', body);
-      const user = Value.Parse(InsertUserSchema, body);
+      const user = Value.Parse(InsertUserRequestSchema, body);
 
       const result = await db
         .insert(userTable)
@@ -47,6 +76,6 @@ export const userPlugin = new Elysia({
       };
     },
     {
-      body: InsertUserSchema,
+      body: InsertUserRequestSchema,
     },
   );
