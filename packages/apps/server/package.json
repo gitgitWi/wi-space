@@ -2,8 +2,10 @@
   "name": "@wi-space/server",
   "version": "0.0.1",
   "scripts": {
+    "dev": "bun --bun run --watch src/index.ts",
+    "build": "bun --bun build src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "drizzle:studio": "bunx --bun drizzle-kit studio"
   },
   "dependencies": {
     "@libsql/client": "^0.9.0",
