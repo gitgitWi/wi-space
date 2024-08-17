@@ -2,6 +2,7 @@ import { sql } from 'drizzle-orm';
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
 import { ulid } from 'ulid';
+import { Type } from '@sinclair/typebox';
 
 const currentTimestampQuery = sql`CURRENT_TIMESTAMP`;
 
@@ -24,11 +25,21 @@ export const userTable = sqliteTable('user', {
   ),
 });
 
-/** @todo Pick name, email only - client request schema */
-export const InsertUserSchema = createInsertSchema(userTable);
+const InsertUserSchema = createInsertSchema(userTable);
 
-export type InsertUser = typeof InsertUserSchema.$inferInsert;
+export const InsertUserRequestSchema = Type.Pick(InsertUserSchema, [
+  'name',
+  'email',
+]);
 
-export const SelectUserSchema = createSelectSchema(userTable);
+const SelectUserSchema = createSelectSchema(userTable);
 
-export type SelectUser = typeof SelectUserSchema.$inferSelect;
+export const SelectUserRequestSchema = Type.Partial(
+  Type.Pick(SelectUserSchema, ['id', 'name', 'email']),
+);
+
+export const SelectUserByIdRequestSchema = Type.Pick(SelectUserSchema, ['id']);
+
+export const SelectUserByEmailRequestSchema = Type.Pick(SelectUserSchema, [
+  'email',
+]);
