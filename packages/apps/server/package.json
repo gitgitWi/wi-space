@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@libsql/client": "^0.9.0",
+    "@sinclair/typebox": "^0.33.7",
     "drizzle-orm": "^0.33.0",
     "drizzle-typebox": "^0.1.1",
     "elysia": "latest",
