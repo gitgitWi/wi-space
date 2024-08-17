@@ -1,7 +1,10 @@
 import { Elysia } from 'elysia';
 
-const app = new Elysia().get('/', () => 'Hello Elysia').listen(8080);
+import { userPlugin } from '~/plugins/users';
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+const PORT = import.meta.env.PORT ? Number(import.meta.env.PORT) : 8080;
+
+new Elysia()
+  .use(userPlugin)
+  .get('/', () => 'Hello from MySpace API')
+  .listen(PORT);
