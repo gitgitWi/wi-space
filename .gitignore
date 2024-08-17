@@ -173,3 +173,7 @@ dist
 
 # Finder (MacOS) folder config
 .DS_Store
+
+# local db
+packages/apps/server/src/clients/db/_local/
+packages/apps/server/clients/db/migrations/
