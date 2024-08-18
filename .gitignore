@@ -176,4 +176,4 @@ dist
 
 # local db
 packages/apps/server/src/clients/db/_local/
-packages/apps/server/clients/db/migrations/
+packages/apps/server/src/clients/db/migrations/

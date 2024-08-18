@@ -5,7 +5,7 @@ import type { Config } from 'drizzle-kit';
  */
 export default {
   schema: './src/handlers/**/schema.ts',
-  out: './clients/db/migrations',
+  out: './src/clients/db/migrations',
   dialect: 'sqlite',
   driver: 'turso',
   dbCredentials: {
