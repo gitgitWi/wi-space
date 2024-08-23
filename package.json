@@ -9,7 +9,8 @@
     "packages/**"
   ],
   "scripts": {
-    "serve:web": "bun --filter '@wi-space/web' dev"
+    "serve:web": "bun --filter '@wi-space/web' dev",
+    "serve:server": "bun --filter '@wi-space/server' dev"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
