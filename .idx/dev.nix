@@ -6,7 +6,6 @@
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.bun
     pkgs.nodejs_20
   ];
 
@@ -15,7 +14,11 @@
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
-      # "vscodevim.vim"
+      "biomejs.biome"
+      "oven.bun-vscode"
+      "esbenp.prettier-vscode"
+      "YoavBls.pretty-ts-errors"
+      "mhutchie.git-graph"
     ];
 
     # Enable previews
@@ -39,7 +42,7 @@
     workspace = {
       # Runs when a workspace is first created
       onCreate = {
-        npm-preinstall = "npm i -g bun && bun upgrade";
+        npm-preinstall = "bun upgrade --stable";
         npm-install = "bun install";
       };
       # Runs when the workspace is (re)started
